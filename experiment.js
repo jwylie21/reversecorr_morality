@@ -18,9 +18,8 @@ const sessionId = jsPsych.data.getURLVariable('SESSION_ID');
 
 const filename = `${participantId}` + "_" + `${studyId}` + "_" + `${sessionId}.csv`;
 
-// Randomize assignment of condition: epistemic / moral
-let epistemicMoralCondition = jsPsych.randomization.sampleWithoutReplacement(['epistemic', 'moral'], 1)[0];
-let individualDifferencesOrderCondition = jsPsych.randomization.sampleWithoutReplacement(['before', 'after'], 1)[0];
+// Randomize assignment of condition:
+let evilcondition = jsPsych.randomization.sampleWithoutReplacement(['evil', 'saint'], 1)[0];
 
 // Random assignment of statements: pick 2 of 5 statements
 const trials = jsPsych.randomization.shuffle([0, 1, 2, 3, 4]).slice(0, 2);
@@ -29,8 +28,7 @@ jsPsych.data.addProperties({
   participantId: participantId,
   studyId: studyId,
   sessionId: sessionId,
-  epistemicMoralCondition: epistemicMoralCondition,
-  individualDifferencesOrderCondition: individualDifferencesOrderCondition
+  evilcondition: evilcondition
 });
 
 // Options
