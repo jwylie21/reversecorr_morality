@@ -1,6 +1,8 @@
 // DEFINE GLOBAL VARIABLES
 let timeline = [];
 
+//CHANGE!!
+
 // jsPsych Initialization
 const jsPsych = initJsPsych({
   use_webaudio: false,
