@@ -1,7 +1,7 @@
 // DEFINE GLOBAL VARIABLES
 let timeline = [];
 
-//CHANGE!!!!
+//CHANGE
 
 // jsPsych Initialization
 const jsPsych = initJsPsych({
