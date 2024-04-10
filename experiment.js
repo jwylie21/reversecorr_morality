@@ -654,7 +654,7 @@ const batQuestions = {
 };
 
 // Evil
-if (epistemicMoralCondition === 'evil') {
+if (evilMoralCondition === 'evil') {
 
   // Instructions
   timeline.push(
@@ -1489,7 +1489,7 @@ function startExperiment() {
       html += "<p></br>Press <span class='light-keys'><kbd>space</kbd></span> to continue</p>";
       return html;
     },
-  };
+  }; 
 
   var Instr_gene1 = {
     type: "html-keyboard-response",
