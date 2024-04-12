@@ -21,7 +21,7 @@ const sessionId = jsPsych.data.getURLVariable('SESSION_ID');
 const filename = `${participantId}` + "_" + `${studyId}` + "_" + `${sessionId}.csv`;
 
 // Randomize assignment of condition:
-let evilcondition = jsPsych.randomization.sampleWithoutReplacement(['evil', 'saint'], 1)[0];
+let evilcondition = jsPsych.randomization.sampleWithoutReplacement(['evil', 'saintly'], 1)[0];
 
 
 jsPsych.data.addProperties({
@@ -162,133 +162,39 @@ timeline.push(consentForm);
 const instructionsEvil = {
   type: jsPsychInstructions,
   pages: [`
-        <h2><strong>Instructions (1/6)</strong></h2>
+        <h2><strong>Instructions</strong></h2>
         <p style="text-align: left;">
           Welcome to this experiment! On the following pages, you will see a 
           series of computer-generated faces. 
         </p>
         <p style="text-align: left;">
-          Your task is to select which of the two faces appears more <strong>evil</strong> to you.  
+          Your task is to select which of the two faces appears more <strong>morally bad</strong> to you.  
         </p>
         <p style="text-align: left;">
           <strong>
           To select, press the 'f' key for the left face, and the 'j' key for the right face. We are interested in your personal opinions.
           </strong>
         </p>`,
-
-    `<h2><strong>Instructions (2/6)</strong></h2>
-        <p style="text-align: left;">
-          In a previous study, we found out what percentage of people in the U.S. believe the statements 
-          you will see are true or false. For that study, we made sure to recruit a nationally representative 
-          sample so that the views of those participants should accurately represent the views of people 
-          in the <strong>U.S. more broadly</strong>.
-        </p>`,
-
-    `<h2><strong>Instructions (3/6)</strong></h2>
-        <p style="text-align: left;">
-          These statements are all structured the same way. They will make a claim about something a real 
-          person from history may have done, and then some of the outcomes of that supposed action. Your job is 
-          to tell us whether you think other people think the statement about that person is or is not true.
-        </p>
-
-        <p style="text-align: left;">
-          We will also ask you rate your curiosity about each person you read about. You should only say you are 
-          extremely curious for the statements you are <strong>absolutely</strong> most curious to learn more about.
-        </p>`,
-
-    `<h2><strong>Instructions (4/6)</strong></h2>
-        <p style="text-align: left;">
-          For example, if you saw the following statement:
-        </p>
-        <blockquote>
-          “Robert Oppenheimer developed the atomic bomb, which ended World War II 
-          but also enabled the devastation of Hiroshima and Nagasaki.”
-        </blockquote>
-        
-        <p style="text-align: left;">
-          Your job would be to evaluate what percentage of people believe that
-           the statement above is a <strong>true (or false) statement.</strong>
-        </p>`,
-
-    `<h2><strong>Instructions (5/6)</strong></h2>
-        <div class="quote">
-          <h3>Example Claim</h3>
-          <blockquote>
-            “Robert Oppenheimer developed the atomic bomb, which ended World War II 
-            but also enabled the devastation of Hiroshima and Nagasaki.”
-          </blockquote>
-        </div><br>
-        <label for="practice-slider-epistemic-estimate-percent">
-          As practice, please estimate what percentage of people in the U.S. believe 
-          that this claim is either true or false:<br><br>
-          <strong>
-            <code style='font-size: 10pt;' id="practice-slider-epistemic-estimate-percent-label">
-              <i class="fa-solid fa-arrow-left" id="fa-arrow-left"></i>&nbsp;(slide to adjust)&nbsp;<i class="fa-solid fa-arrow-right" id="fa-arrow-right"></i>
-            </code>
-          </strong>
-        </label>
-        <div style="position: relative;">
-          <input 
-            name="practice-slider-epistemic-estimate-percent" 
-            type="range" 
-            class="jspsych-slider incomplete" 
-            value="50" min="0" max="100" step="1" 
-            id="practice-slider-epistemic-estimate-percent"
-            oninput="
-              this.classList.remove('incomplete');
-              this.classList.add('bipolar-clicked');
-
-              $('#practice-slider-epistemic-estimate-percent-label').addClass('fade-out');
-
-              let rawRating = parseFloat(this.value);
-              let downRating = (100 - rawRating) + '%';
-              let upRating = rawRating + '%';
-            
-              $('#slider-downRating').text(downRating);
-              $('#slider-upRating').text(upRating);
-            "
-          >
-          <output style="position: absolute; left: 0%; font-size: 14pt;" id="slider-downRating">50%</output>
-          <output style="position: absolute; right: 0%; font-size: 14pt;" id="slider-upRating">50%</output><br>
-          <span class="jspsych-slider-left-anchor">
-            <strong>believe this is false</strong>
-          </span>
-          <span class="jspsych-slider-right-anchor">
-           <strong>believe this is true</strong>
-          </span>
-        </div>`,
-
-    `<h2><strong>Instructions (6/6)</strong></h2>
-        <p style="text-align: left;">
-          To help you estimate what other Americans believe, you will have the opportunity 
-          to see what people in that previous study thought about the statements. You will see 
-          randomly generated avatars representing people who participated in that study.
-        </p>
-        <p style="text-align: left;">
-          Every time you click on an avatar, you will see whether that 
-          <strong>one person believes the claim is true or false.</strong> 
-          You can view the opinions of as many people as you'd like before making your estimate.
-        </p>`
   ],
   show_clickable_nav: true,
 };
 
 // SAINTLY INSTRUCTIONS //
-const instructionsMoral = {
+const instructionsSaintly = {
   type: jsPsychInstructions,
   pages: [
-    `<h2><strong>Instructions (1/6)</strong></h2>
+    `<h2><strong>Instructions</strong></h2>
     <p style="text-align: left;">
       Welcome to this experiment! On the following pages, you will see a series of computer-generated faces.
     </p>
     <p style="text-align: left;">
-    Your task is to select which of the two faces appears more <strong>saintly</strong> to you. 
+    Your task is to select which of the two faces appears more <strong>morally good</strong> to you. 
     </p>
     <p style="text-align: left;">
       <strong>
       To select, press the 'f' key for the left face, and the 'j' key for the right face. We are interested in your personal opinions.
       </strong>
-    </p>`,
+    </p>`
   ],
 };
 
@@ -299,35 +205,23 @@ const instructionsEvilComprehensionCheck = {
       name: 'evil_comp_check_1',
       prompt: '<strong><i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;For each statement, your task is to:</strong>',
       options: [
-        "Judge which face appears more saintly.",
-        "Judge which face appears more evil.",
+        "Judge which face appears more morally good.",
+        "Judge which face appears more morally bad.",
         "Judge which face appears more familiar.",
         "Judge which face appears more attractive."
       ],
-      correct: 'Judge which face appears more evil.',
-      hint: `That's not quite right. Remember, you are judging which face appears more <strong>evil</strong>`,
+      correct: 'Judge which face appears more morally bad.',
+      hint: `That's not quite right. Remember, you are judging which face appears more <strong>morally bad</strong>`,
       required: true,
-    },
-    {
-      name: 'evil_comp_check_2',
-      prompt: `
-            <strong>
-              <i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;
-              You don't have to pick one of the two faces, you can pick both.
-            </strong>`,
-      options: ["True", "False"],
-      correct: 'False',
-      hint: `That's not quite right. Remember, you have to pick which <strong>one</strong> of the two appears more evil.`,
-      required: true,
-    },
+    }
   ],
   preamble:
     `<h2 style="text-align: center;">Instructions Review</h2> 
     <p style="text-align: left;"> 
       The experiment will begin on the next page.
       
-      As a reminder, you will see a series of computer-generated faces and you will have to select the one that appears more evil.<br><br>
-    </p>`,
+      As a reminder, you will see a series of computer-generated faces and you will have to select the one that appears more morally bad.<br><br>
+    </p>`
 };
 
 const instructionsSaintlyComprehensionCheck = {
@@ -337,35 +231,23 @@ const instructionsSaintlyComprehensionCheck = {
       name: 'saintly_comp_check_1',
       prompt: '<strong><i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;For each statement, your task is to:</strong>',
       options: [
-        "Judge which face appears more saintly.",
-        "Judge which face appears more evil.",
+        "Judge which face appears more morally good.",
+        "Judge which face appears more morally bad.",
         "Judge which face appears more familiar.",
         "Judge which face appears more attractive."
       ],
-      correct: 'Judge which face appears more saintly.',
-      hint: `That's not quite right. Remember, you are judging which face appears more <strong>saintly</strong>`,
+      correct: 'Judge which face appears more morally good.',
+      hint: `That's not quite right. Remember, you are judging which face appears more <strong>morally good</strong>`,
       required: true,
-    },
-    {
-      name: 'saintly_comp_check_2',
-      prompt: `
-            <strong>
-              <i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;
-              You don't have to pick one of the two faces, you can pick both.
-            </strong>`,
-      options: ["True", "False"],
-      correct: 'False',
-      hint: `That's not quite right. Remember, you have to pick which <strong>one</strong> of the two appears more saintly.`,
-      required: true,
-    },
+    }
   ],
   preamble:
     `<h2 style="text-align: center;">Instructions Review</h2> 
     <p style="text-align: left;"> 
       The experiment will begin on the next page.
       
-      As a reminder, you will see a series of computer-generated faces and you will have to select the one that appears more saintly.<br><br>
-    </p>`,
+      As a reminder, you will see a series of computer-generated faces and you will have to select the one that appears more morally good.<br><br>
+    </p>`
 };
 
 // Intertrial Break Page
@@ -375,7 +257,7 @@ function newTrialPage(trialIndex) {
     pages: [`
           <h2><strong>Trial ` + (trialIndex + 1) + `/` + trials.length + ` Completed!</strong></h2>
           <p style="text-align: left;">
-            Great Job! You will now advance to the second trial. 
+            Great Job! You are now half way done! 
             Please click the button below to continue.
           </p>`
     ],
@@ -453,207 +335,7 @@ const iriQuestions = {
   }
 };
 
-const ihQuestions = {
-  type: jsPsychSurveyMultiChoice,
-  questions: [
-    {
-      name: "ih-1-r",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        My intellectual ideas are usually superior to others' ideas.</strong>
-        </p>`,
-      options: ihResponses,
-      horizontal: true,
-      // anchor: true,
-      // labels: ['Strongly Disagree', 'Strongly Agree']
-    },
-    {
-      name: "ih-2-r",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I desire to be famous for an intellectual contribution.</strong>
-        </p>`,
-      options: ihResponses,
-      horizontal: true
-    },
-    {
-      name: "ih-3-r",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I know just about everything there is to know. </strong>
-        </p>`,
-      options: ihResponses,
-      horizontal: true
-    },
-    {
-      name: "ih-4-r",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        Other people think that I am a know-it-all.</strong>
-        </p>`,
-      options: ihResponses,
-      horizontal: true
-    },
-    {
-      name: "ih-5",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I am open to other's ideas about how to do things.</strong>
-        </p>`,
-      options: ihResponses,
-      horizontal: true
-    },
-    {
-      name: "ih-6",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I can learn from other people.</strong>
-        </p>`,
-      options: ihResponses,
-      horizontal: true
-    },
-    {
-      name: "ih-7",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I am open to others' criticisms of my intellectual ideas.</strong>
-        </p>`,
-      options: ihResponses,
-      horizontal: true
-    },
-    {
-      name: "ih-8",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I am an intellectually humble person.</strong>
-        </p>`,
-      options: ihResponses,
-      horizontal: true
-    }
-  ],
-  randomize_question_order: true,
-  request_response: true,
-  preamble: `
-    <p class="jspsych-survey-multi-choice-preamble">
-      For each of the statements below, please indicate how much the statement
-      is generally characteristic of you.
-    </p>`,
-  on_finish: function (data) {
-    let ihData = data.response;
-
-    ihData = {
-      ih_1_r: ihData['ih-1-r'],
-      ih_2_r: ihData['ih-2-r'],
-      ih_3_r: ihData['ih-3-r'],
-      ih_4_r: ihData['ih-4-r'],
-      ih_5: ihData['ih-5'],
-      ih_6: ihData['ih-6'],
-      ih_7: ihData['ih-7'],
-      ih_8: ihData['ih-8']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(ihData);
-  }
-};
-
-// <!-- New individual diffs--> //
-
-const batQuestions = {
-  type: jsPsychSurveyMultiChoice,
-  questions: [
-    {
-      name: "bat-1",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        My decisions are usually based on my concern for other people.</strong>
-        </p>`,
-      options: batResponses,
-      horizontal: true,
-    },
-    {
-      name: "bat-2",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I choose a course of action that maximizes the help other people receive.</strong>
-        </p>`,
-      options: batResponses,
-      horizontal: true
-    },
-    {
-      name: "bat-3",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I am motivated by social approval.</strong>
-        </p>`,
-      options: batResponses,
-      horizontal: true
-    },
-    {
-      name: "bat-4",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I don't like situations that are uncertain.</strong>
-        </p>`,
-      options: batResponses,
-      horizontal: true
-    },
-    {
-      name: "bat-5",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I think that having clear rules and order at work is essential for success.</strong>
-        </p>`,
-      options: batResponses,
-      horizontal: true
-    },
-    {
-      name: "bat-6",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        When I am confused about an important issue, I feel very upset.</strong>
-        </p>`,
-      options: batResponses,
-      horizontal: true
-    },
-    {
-      name: "bat-7",
-      prompt: `
-        <p class="jspsych-survey-multi-choice-question">
-        I dislike unpredictable situations.</strong>
-        </p>`,
-      options: batResponses,
-      horizontal: true
-    }
-  ],
-  randomize_question_order: true,
-  request_response: true,
-  preamble: `
-    <p class="jspsych-survey-multi-choice-preamble">
-      For each of the statements below, please indicate how much you agree 
-      or disagree with the statement.
-    </p>`,
-  on_finish: function (data) {
-    let batData = data.response;
-
-    batData = {
-      bat_1: batData['bat-1'],
-      bat_2: batData['bat-2'],
-      bat_3: batData['bat-3'],
-      bat_4: batData['bat-4'],
-      bat_5: batData['bat-5'],
-      bat_6: batData['bat-6'],
-      bat_7: batData['bat-7']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(batData);
-  }
-};
-
-// Evil
+// Evil 
 if (evilMoralCondition === 'evil') {
 
   // Instructions
@@ -663,22 +345,13 @@ if (evilMoralCondition === 'evil') {
   );
 
   // Pre-Sampling Individual Differences
-  if (individualDifferencesOrderCondition == "before") {
-    timeline.push(
-      iriQuestions,
-      ihQuestions,
-      batQuestions
-    );
+    timeline.push(iriQuestions);
   }
 
   // Sampling Task
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
-      prePredictionsEvilSelf(trialIndex),
-      prePredictionsEvilOther(trialIndex),
       selectionTask(trialIndex, evilMoralCondition),
-      postPredictionsEvilSelf(trialIndex),
-      postPredictionsEvilOther(trialIndex),
     );
     if (trialIndex != trials.length - 1) {
       timeline.push(
@@ -689,39 +362,27 @@ if (evilMoralCondition === 'evil') {
 
   // Post-Sampling Individual Differences
   if (individualDifferencesOrderCondition == "after") {
-    timeline.push(
-      iriQuestions,
-      ihQuestions,
-      batQuestions
-    );
+    timeline.push(iriQuestions);
   }
   
-// SAINT
-} else if (evilMoralCondition === 'saint') {
+// SAINTLY
+  else if (evilMoralCondition === 'saintly') {
   
   // Instructions
   timeline.push(
-    instructionsSaint,
-    instructionsSaintComprehensionCheck
+    instructionsSaintly,
+    instructionsSaintlyComprehensionCheck
   );
 
   // Pre-Sampling Individual Differences
   if (individualDifferencesOrderCondition == "before") {
-    timeline.push(
-      iriQuestions,
-      ihQuestions,
-      batQuestions
-    );
+    timeline.push(iriQuestions);
   }
 
   // Sampling Task
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
-      prePredictionsMoralSelf(trialIndex),
-      prePredictionsMoralOther(trialIndex),
-      selectionTask(trialIndex, epistemicMoralCondition),
-      postPredictionsMoralSelf(trialIndex),
-      postPredictionsMoralOther(trialIndex),
+      selectionTask(trialIndex, evilMoralCondition),
     );
     if (trialIndex != trials.length - 1) {
       timeline.push(
@@ -732,14 +393,9 @@ if (evilMoralCondition === 'evil') {
 
   // Post-Sampling Individual Differences
   if (individualDifferencesOrderCondition == "after") {
-    timeline.push(
-      iriQuestions,
-      ihQuestions,
-      batQuestions
-    );
+    timeline.push(iriQuestions);
   }
 };
-
 
 // DEMOGRAPHICS //
 
@@ -1276,15 +932,6 @@ const demandEffectsQuestions = {
           </p>`,
       options: demandEffectsResponses,
       horizontal: true
-    },
-    {
-      name: 'judgment',
-      prompt:
-        `<p class="jspsych-survey-multi-choice-question">
-            Did you feel as though you might be judged for your responses to the questions you answered?
-          </p>`,
-      options: demandEffectsResponses,
-      horizontal: true
     }
   ],
   randomize_question_order: true,
@@ -1299,8 +946,7 @@ const demandEffectsQuestions = {
     let demandEffectsData = data.response;
 
     demandEffectsData = {
-      pressure: demandEffectsData['pressure'],
-      judgment: demandEffectsData['judgment']
+      pressure: demandEffectsData['pressure']
     };
 
     jsPsych.data
