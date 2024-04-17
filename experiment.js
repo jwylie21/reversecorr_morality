@@ -662,16 +662,7 @@ if (evilMoralCondition === 'evil') {
     instructionsEvilComprehensionCheck
   );
 
-  // Pre-Sampling Individual Differences
-  if (individualDifferencesOrderCondition == "before") {
-    timeline.push(
-      iriQuestions,
-      ihQuestions,
-      batQuestions
-    );
-  }
-
-  // Sampling Task
+  // Sampling Task -- to replace with the actual RC task
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
       prePredictionsEvilSelf(trialIndex),
@@ -687,14 +678,11 @@ if (evilMoralCondition === 'evil') {
     };
   };
 
-  // Post-Sampling Individual Differences
-  if (individualDifferencesOrderCondition == "after") {
-    timeline.push(
-      iriQuestions,
-      ihQuestions,
-      batQuestions
-    );
-  }
+  // Individual diffs
+  timeline.push(
+    iriQuestions,
+    batQuestions
+  );
   
 // SAINT
 } else if (evilMoralCondition === 'saint') {
@@ -714,7 +702,7 @@ if (evilMoralCondition === 'evil') {
     );
   }
 
-  // Sampling Task
+  // Sampling Task -- to replace with the actual RC task
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
       prePredictionsMoralSelf(trialIndex),
