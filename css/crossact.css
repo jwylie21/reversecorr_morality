@@ -1,7 +1,7 @@
-body {
-    /*background-image: url("../stims/water_background.jpg"); */
+/* body {
+    background-image: url("../stims/water_background.jpg");
 	margin: 0;
-}
+} */
 
 /*
 html { 
@@ -27,7 +27,7 @@ html {
 }
 */
 
-#jspsych-target {
+/* #jspsych-target {
   position: relative;
 }
 
@@ -105,7 +105,7 @@ input[type=number]{
 
 #jspsych-prodbox-3 {
 	font-size: 20pt;	
-}
+} */
 
 
 /* Removes the default red box outline on the input element when an option is not selected */
@@ -118,7 +118,7 @@ input:focus:invalid {
   color: red;
 } */
 
-#jspsych-selection-learning-btngroup {
+/* #jspsych-selection-learning-btngroup {
 	margin-top: 20px;
 }
 
@@ -133,4 +133,4 @@ input:focus:invalid {
 	top: 50px;
 	left: 362px;
   	border: 2px solid #444;
-}
+} */
