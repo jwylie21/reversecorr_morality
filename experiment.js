@@ -1,7 +1,7 @@
 // DEFINE GLOBAL VARIABLES
 let timeline = [];
 
-let trials = new Array(300)
+let trials = new Array(350)
 
 //CHANGE
 
@@ -9,7 +9,7 @@ let trials = new Array(300)
 const jsPsych = initJsPsych({
   use_webaudio: false,
   display_element: 'jspsych-target',
-  show_progress_bar: false,
+  show_progress_bar: true,
   default_iti: 0,
   on_finish: function (data) {
     jsPsych.data.displayData('csv');
@@ -57,12 +57,6 @@ const demandEffectsResponses = [
   "4",
   "5 = Very much so"
 ];
-
-const iriResponses = [
-    "response 1",
-    "response 2", 
-    "response 3"
-]
 
 // ENTER FULLSCREEN //
 const enterFullscreen = {
@@ -174,15 +168,15 @@ const instructionsEvil = {
   pages: [`
         <h2><strong>Instructions</strong></h2>
         <p style="text-align: left;">
-          Welcome to this experiment! On the following pages, you will see a 
-          series of computer-generated faces. 
+          Welcome to this experiment! In this study you will see a 
+          series of pairs of computer-generated faces. 
         </p>
         <p style="text-align: left;">
           Your task is to select which of the two faces appears more <strong>morally bad</strong> to you.  
         </p>
         <p style="text-align: left;">
           <strong>
-          To select, press the 'f' key for the left face, and the 'j' key for the right face. We are interested in your personal opinions.
+          You will press the 'f' key to select the face on the left, and the 'j' key to select the face on right. We are interested in your opinions.
           </strong>
         </p>`,
   ],
@@ -195,14 +189,15 @@ const instructionsSaintly = {
   pages: [
     `<h2><strong>Instructions</strong></h2>
     <p style="text-align: left;">
-      Welcome to this experiment! On the following pages, you will see a series of computer-generated faces.
-    </p>
+    Welcome to this experiment! In this study you will see a 
+    series of pairs of computer-generated faces. 
+  </p>
     <p style="text-align: left;">
     Your task is to select which of the two faces appears more <strong>morally good</strong> to you. 
     </p>
     <p style="text-align: left;">
       <strong>
-      To select, press the 'f' key for the left face, and the 'j' key for the right face. We are interested in your personal opinions.
+      You will press the 'f' key to select the face on the left, and the 'j' key to select the face on right. We are interested in your opinions.
       </strong>
     </p>`
   ],
@@ -224,6 +219,17 @@ const instructionsEvilComprehensionCheck = {
       correct: 'Judge which face appears more morally bad.',
       hint: `That's not quite right. Remember, you are judging which face appears more <strong>morally bad</strong>`,
       required: true,
+
+      name: 'evil_comp_check_2',
+      prompt: '<strong><i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;What buttons should you press to make your selection?</strong>',
+      options: [
+        "The J key for selecting the left face, and the F key for selecting the right face.",
+        "The F key for selecting the left face, and the J key for selecting the right face.",
+        "The S key for selecting the left face, and the K key for selecting the right face."
+      ],
+      correct: 'The F key for selecting the left face, and the J key for selecting the right face.',
+      hint: `That's not quite right. Remember, you should use the F key for selecting the left face, and the J key for selecting the right face.</strong>`,
+      required: true
     }
   ],
   preamble:
@@ -231,7 +237,7 @@ const instructionsEvilComprehensionCheck = {
     <p style="text-align: left;"> 
       The experiment will begin on the next page.
       
-      As a reminder, you will see a series of computer-generated faces and you will have to select the one that appears more morally bad.<br><br>
+      As a reminder, you will see a series of computer-generated faces. These faces will be blurry and hard to make out. Your task is to select whichever one looks <b>more</b> morally bad even if they are hard to tell apart.<br><br>
     </p>`
 };
 
@@ -250,6 +256,17 @@ const instructionsSaintlyComprehensionCheck = {
       correct: 'Judge which face appears more morally good.',
       hint: `That's not quite right. Remember, you are judging which face appears more <strong>morally good</strong>`,
       required: true,
+
+      name: 'saintly_comp_check_2',
+      prompt: '<strong><i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;What buttons should you press to make your selection?</strong>',
+      options: [
+        "The J key for selecting the left face, and the F key for selecting the right face.",
+        "The F key for selecting the left face, and the J key for selecting the right face.",
+        "The S key for selecting the left face, and the K key for selecting the right face."
+      ],
+      correct: 'The F key for selecting the left face, and the J key for selecting the right face.',
+      hint: `That's not quite right. Remember, you should use the F key for selecting the left face, and the J key for selecting the right face.</strong>`,
+      required: true
     }
   ],
   preamble:
@@ -257,94 +274,11 @@ const instructionsSaintlyComprehensionCheck = {
     <p style="text-align: left;"> 
       The experiment will begin on the next page.
       
-      As a reminder, you will see a series of computer-generated faces and you will have to select the one that appears more morally good.<br><br>
+      As a reminder, you will see a series of computer-generated faces. These faces will be blurry and hard to make out. Your task is to select whichever one looks <b>more</b> morally good even if they are hard to tell apart.<br><br>
     </p>`
 };
 
-// Intertrial Break Page
-function newTrialPage(trialIndex) {
-  return {
-    type: jsPsychInstructions,
-    pages: [`
-          <h2><strong>Trial ` + (trialIndex + 1) + `/` + trials.length + ` Completed!</strong></h2>
-          <p style="text-align: left;">
-            Great Job! You are now half way done! 
-            Please click the button below to continue.
-          </p>`
-    ],
-    show_clickable_nav: true
-  };
-};
-
-// INDIVIDUAL DIFFERENCES //
-
-// IRI - Perspective Taking //
-const iriQuestions = {
-  type: jsPsychSurveyMultiChoice,
-  questions: [
-    {
-      name: 'iri-1',
-      prompt:
-        `<p class="jspsych-survey-multi-choice-question">
-        I try to look at everybody's side of a disagreement before I make a decision.
-        </p>`,
-      options: iriResponses,
-      horizontal: true
-    },
-    {
-      name: 'iri-2',
-      prompt:
-        `<p class="jspsych-survey-multi-choice-question">
-        I sometimes try to understand my friends better by imagining how things
-        look from their perspective.
-        </p>`,
-      options: iriResponses,
-      horizontal: true
-    },
-    {
-      name: 'iri-3',
-      prompt:
-        `<p class="jspsych-survey-multi-choice-question">
-        When I'm upset at someone, I usually try to 'put myself in his shoes' for a
-        while.
-        </p>`,
-      options: iriResponses,
-      horizontal: true
-    },
-    {
-      name: 'iri-4',
-      prompt:
-        `<p class="jspsych-survey-multi-choice-question">
-        Before criticizing somebody, I try to imagine how I would feel if I were in
-        their place.
-        </p>`,
-      options: iriResponses,
-      horizontal: true
-    }
-  ],
-  randomize_question_order: true,
-  request_response: true,
-  preamble:
-    `<p class="jspsych-survey-multi-choice-preamble">
-      Please indicate how well each of the following statements
-      describe you using the scale provided:
-    </p>`,
-  scale_width: 500,
-  on_finish: function (data) {
-    let iriData = data.response;
-
-    iriData = {
-      iri_1: iriData['iri-1'],
-      iri_2: iriData['iri-2'],
-      iri_3: iriData['iri-3'],
-      iri_4: iriData['iri-4']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(iriData);
-  }
-};
+// TASK 
 
 function selectionTask(trialIndex, evilMoralCondition, randomized_indices) {
     let wording = "good"
@@ -354,17 +288,22 @@ function selectionTask(trialIndex, evilMoralCondition, randomized_indices) {
     }
 
     let trial_stimulus = `
-        which face is more morally ${wording}?
+        <div style="font-size:30px;">Which face looks more morally <strong>${wording}</strong>?</div>
         <br>
         <img src="images/rcic_avg_2022_00${randomized_indices[trialIndex]}_inv.png">
         <img src="images/rcic_avg_2022_00${randomized_indices[trialIndex]}_ori.png">
+        <br>
+        <br>
+        <br>
+        <br>
+        Reminder: The <b>F</b> key is for the face on the left and the <b>J</b> key is for the face on the right
     `
     
     let selection = {
-        type: jsPsychHtmlButtonResponse,
+        type: jsPsychHtmlKeyboardResponse,
         stimulus: trial_stimulus,
-        choices: ["Photo 1", "Photo 2"],
-        trial_duration: 1000,
+        choices: ["f", "j"],
+        //trial_duration: 5000,
         data: {
             index: randomized_indices[trialIndex]
         }
@@ -373,16 +312,16 @@ function selectionTask(trialIndex, evilMoralCondition, randomized_indices) {
     return selection
 }
 
-function fixation_cross(time) {
-
-    let cross = {
-        type: jsPsychHtmlKeyboardResponse,
-        stimulus: `+`,
-        choices: "NO_KEYS",
-        trial_duration: time,
-    }
-
-    return cross
+var fixation = {
+  type: jsPsychHtmlKeyboardResponse,
+  stimulus: '<div style="font-size:60px;text-align:center; height:500px; line-height:500px;">+</div>',
+  choices: "NO_KEYS",
+  trial_duration: function(){
+    return jsPsych.randomization.sampleWithReplacement([350, 550, 750, 950, 1250], 1)[0];
+  },
+  data: {
+    task: 'fixation'
+}
 }
 
 // Evil 
@@ -406,6 +345,7 @@ if (evilMoralCondition === 'evil') {
   // Sampling Task
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
+      fixation,
       selectionTask(trialIndex, evilMoralCondition, randomized_indices),
     );
     // if (trialIndex != trials.length - 1) {
@@ -442,7 +382,7 @@ if (evilMoralCondition === 'evil') {
   // Sampling Task -- to replace with the actual RC task
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
-        fixation_cross(500),
+        fixation,
         selectionTask(trialIndex, evilMoralCondition, randomized_indices)
     );
     // if (trialIndex != trials.length - 1) {
@@ -459,7 +399,6 @@ if (evilMoralCondition === 'evil') {
 };
 
 // DEMOGRAPHICS //
-
 const demographicsQuestions = {
   type: jsPsychSurveyHtmlForm,
   preamble:
