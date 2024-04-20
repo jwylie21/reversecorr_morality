@@ -25,9 +25,6 @@ const filename = `${participantId}` + "_" + `${studyId}` + "_" + `${sessionId}.c
 // Randomize assignment of condition:
 let evilMoralCondition = jsPsych.randomization.sampleWithoutReplacement(['evil', 'saintly'], 1)[0];
 
-let individualDifferencesOrderCondition = jsPsych.randomization.sampleWithoutReplacement(['before', 'after'], 1)[0];
-
-
 jsPsych.data.addProperties({
   participantId: participantId,
   studyId: studyId,
@@ -333,15 +330,6 @@ if (evilMoralCondition === 'evil') {
     // instructionsEvilComprehensionCheck
   );
 
-  // Pre-Sampling Individual Differences
-  if (individualDifferencesOrderCondition == "before") {
-    timeline.push(
-    //   iriQuestions,
-    //   ihQuestions,
-    //   batQuestions
-    );
-  }
-
   // Sampling Task
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
@@ -355,14 +343,6 @@ if (evilMoralCondition === 'evil') {
     // };
   };
 
-  // Post-Sampling Individual Differences
-  if (individualDifferencesOrderCondition == "after") {
-    timeline.push(
-    //   iriQuestions,
-    //   ihQuestions,
-    //   batQuestions
-    );
-  }
 }
 
 // SAINTLY
@@ -373,11 +353,6 @@ if (evilMoralCondition === 'evil') {
     // instructionsSaintly,
     // instructionsSaintlyComprehensionCheck
   );
-
-  // Pre-Sampling Individual Differences
-  if (individualDifferencesOrderCondition == "before") {
-    // timeline.push(iriQuestions);
-  }
 
   // Sampling Task -- to replace with the actual RC task
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
@@ -392,10 +367,6 @@ if (evilMoralCondition === 'evil') {
     // };
   };
 
-  // Post-Sampling Individual Differences
-  if (individualDifferencesOrderCondition == "after") {
-    // timeline.push(iriQuestions);
-  }
 };
 
 // DEMOGRAPHICS //
@@ -962,14 +933,6 @@ timeline.push(demandEffectsQuestions);
 const feedback = {
   type: jsPsychSurveyText,
   questions: [
-    {
-      name: 'guess-study-purpose',
-      prompt:
-        `<p class="jspsych-survey-multi-choice-question" style='text-align: "center !important;"'>
-          What do you think this study was about?
-        </p>`,
-      rows: 10
-    },
     {
       name: 'feedback',
       prompt:
