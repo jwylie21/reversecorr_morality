@@ -3,12 +3,11 @@ let timeline = [];
 
 let trials = new Array(350)
 
-//CHANGE
-
 // jsPsych Initialization
 const jsPsych = initJsPsych({
   use_webaudio: false,
   display_element: 'jspsych-target',
+  auto_preload: true,
   show_progress_bar: true,
   default_iti: 0,
   on_finish: function (data) {
@@ -46,15 +45,6 @@ const politicalResponses = [
   "7 (Extremely conservative)",
 ];
 
-// Experimenter Demand Effects
-const demandEffectsResponses = [
-  "1 = Not at all",
-  "2",
-  "3",
-  "4",
-  "5 = Very much so"
-];
-
 // ENTER FULLSCREEN //
 const enterFullscreen = {
   type: jsPsychFullscreen,
@@ -63,7 +53,7 @@ const enterFullscreen = {
   delay_after: 0
 };
 
-// timeline.push(enterFullscreen)
+timeline.push(enterFullscreen)
 
 // CONSENT FORM //
 const consentForm = {
@@ -73,64 +63,43 @@ const consentForm = {
       name: 'consent',
       prompt: `
             <p style="text-align:left;">
-              You are being asked to participate in a research study titled 
-              "Moral Judgment and Decision-Making." You were selected to participate in 
-              this project because you are an adult over age 18. This study is sponsored by 
-              Boston College and the John Templeton Foundation.
+            You are being asked to participate in a research study titled “Social Judgment and Decision-Making”. 
+            You were selected to participate in this project because you are an adult over age 18. 
+            This study is sponsored by Boston College and the John Templeton Foundation.
             </p>
             <p style="text-align: left;">
-              The purpose of this study is to understand how we weigh information about 
-              others. This study will be conducted through this online survey. The survey 
-              should take you between ___ minutes to complete. There are no direct 
-              benefits to you, but you may feel gratified knowing that you helped further 
-              the scholarly work in this research area, and we will compensate you for your 
-              participation at a rate of ___. There are no costs to you associated with your 
-              participation.
+            The purpose of this study is social decision-making, and specifically how people judge the decisions and 
+            values of others. 
+            This study will be conducted through this online survey. 
+            The study should take you about 17 minutes to complete.
             </p>
             <p style="text-align: left;">
-              The researchers do not believe participation would entail any risks or 
-              discomforts beyond those ordinarily encountered in everyday life.
+            There are no direct benefits to you, but you may feel gratified knowing that you helped further the scholarly 
+            work in this research area. You will be compensated $2.50 for participating in this study.
+            There are no costs to you associated with your participation.
             </p>
             <p style="text-align: left;">
-              This Principal Investigator, Dr. Liane Young, will exert all reasonable efforts 
-              to keep your responses and your identity confidential. We will not maintain 
-              within our research data any information that uniquely identifies you, such as 
-              your name, location, or Internet Protocol (IP) address. In any report we 
-              publish, we will not include any information that will make it possible to 
-              identify a participant. Data that includes user-ID information will be collected 
-              and stored via third-party servers like Qualtrics or Pavlovia. Data collected 
-              from the experiment will be coded to remove your name or any other 
-              personal identifiers. All records will be secured in a locked cabinet in our lab. 
-              The Institutional Review Board at Boston College and internal Boston College 
-              auditors may review the research records. State or federal laws or court 
-              orders may also require that information from research study records be 
-              released. Otherwise, the researchers will not release to others any 
-              information that could indicate your identity unless you give your permission, 
-              or unless the researchers become legally required to do so.
+            This Principal Investigator will exert all reasonable efforts to keep your responses and your identity confidential. 
+            We may have access to, and may maintain in our data collection, your Prolific ID. 
+            However, aside from your Prolific ID, we will not maintain within our research data any information that uniquely 
+            identifies you, such as your name, location, or Internet Protocol (IP) address.
+            In any report we publish, we will not include any information that will make it possible to identify a participant. 
+            Data collected from the experiment will be coded to remove your name or any other personal identifiers. 
+            All records will be secured in a locked cabinet in our lab. Access to the records will be limited to the researchers; 
+            however, please note that regulatory agencies and the Boston College Institutional Review Board and internal Boston College 
+            auditors may review the research records. Please also note the organization that operates your Internet survey platform may 
+            retain your responses and, additionally, may maintain a link identifying you as the source of those responses. 
+            Your user agreement with the survey platform organization may address this topic. Your participation is voluntary. 
+            If you choose not to participate it will not affect your relations with Boston College.
             </p>
             <p style="text-align: left;">
-              Although the survey will not prompt you directly to identify yourself by 
-              name, email address or the like, the survey will include several demographic 
-              items that would prompt you to provide certain demographic information, 
-              such as your age, gender, ethnicity, education level and the like. In 
-              combination, responses to such questions could suggest your identity. 
-              Regardless, please know that the researchers will make no purposeful effort 
-              to discern your identity based on such information. Additionally, please note 
-              that you may opt to leave any such questions blank.
+            Some questions on the survey, such as comprehension questions, may be required in order to complete the survey 
+            and receive compensation. However, you may still choose to end your participation in the study at any time.
             </p>
             <p style="text-align: left;">
-              Your participation is voluntary. If you choose not to participate it will not 
-              affect your relations with Boston College. Some questions on the survey, 
-              such as comprehension questions, may be required in order to complete the 
-              survey and receive compensation. However, you may still choose to end 
-              your participation in the study at any time. If you have questions or concerns 
-              concerning this research you may contact the Principal Investigator at 
-              <a href="tel:16175520240">+1 (617) 552-0240</a>
-              or <a href="mailto:liane.young@bc.edu">liane.young@bc.edu</a>. If you have 
-              questions about your rights as a research participant, you may contact the
-              Office for Research Protections, Boston College, at 
-              <a href="tel:16175524778">+1 (617) 552-4778</a> or
-              <a href="mailto:irb@bc.edu">irb@bc.edu</a>.
+            If you have questions or concerns concerning this research you may contact the Principal Investigator at 
+            617-552-0240 or liane.young@bc.edu. If you have questions about your rights as a research participant, 
+            you may contact the Office for Research Protections, Boston College, at 617-552-4778 or irb@bc.edu. 
             </p>
             <p style="text-align: left;">
               If you agree to the statements above and agree to participate in this study,
@@ -326,8 +295,8 @@ if (evilMoralCondition === 'evil') {
 
   // Instructions
   timeline.push(
-    // instructionsEvil,
-    // instructionsEvilComprehensionCheck
+    instructionsEvil,
+    instructionsEvilComprehensionCheck
   );
 
   // Sampling Task
@@ -350,8 +319,8 @@ if (evilMoralCondition === 'evil') {
   
   // Instructions
   timeline.push(
-    // instructionsSaintly,
-    // instructionsSaintlyComprehensionCheck
+    instructionsSaintly,
+    instructionsSaintlyComprehensionCheck
   );
 
   // Sampling Task -- to replace with the actual RC task
@@ -837,7 +806,6 @@ const demographicsQuestions = {
 
 timeline.push(demographicsQuestions);
 
-
 const politicsQuestions = {
   type: jsPsychSurveyMultiChoice,
   questions: [
@@ -891,45 +859,7 @@ const politicsQuestions = {
 
 timeline.push(politicsQuestions);
 
-
-const demandEffectsQuestions = {
-  type: jsPsychSurveyMultiChoice,
-  questions: [
-    {
-      name: 'pressure',
-      prompt:
-        `<p class="jspsych-survey-multi-choice-question">
-            Did you feel pressure to respond in a particular way to any of the questions?
-          </p>`,
-      options: demandEffectsResponses,
-      horizontal: true
-    }
-  ],
-  randomize_question_order: true,
-  request_response: true,
-  scale_width: 500,
-  preamble:
-    `<p class="jspsych-survey-multi-choice-preamble">
-        For these final questions, please answer as honestly as you can.
-        The answers to these questions will <strong>not</strong> affect whether or not you receive credit/payment for participation!
-      </p>`,
-  on_finish: function (data) {
-    let demandEffectsData = data.response;
-
-    demandEffectsData = {
-      pressure: demandEffectsData['pressure']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(demandEffectsData);
-  }
-};
-
-timeline.push(demandEffectsQuestions);
-
-
-// Guess Study Purpose / Questions + Comments
+// Comments
 const feedback = {
   type: jsPsychSurveyText,
   questions: [
@@ -956,7 +886,7 @@ const feedback = {
   }
 }
 
-// timeline.push(feedback);
+timeline.push(feedback);
 
 // Exit fullscreen
 const exitFullscreen = {
@@ -965,7 +895,7 @@ const exitFullscreen = {
   delay_after: 0
 };
 
-// timeline.push(exitFullscreen);
+timeline.push(exitFullscreen);
 
 // DataPipe conclude data collection
 // const save_data = {
