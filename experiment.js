@@ -125,8 +125,7 @@ const consentForm = {
   }
 };
 
-// timeline.push(consentForm);
-
+timeline.push(consentForm);
 
 // EVIL INSTRUCTIONS //
 const instructionsEvil = {
