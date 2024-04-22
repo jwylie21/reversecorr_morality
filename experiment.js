@@ -897,38 +897,38 @@ const exitFullscreen = {
 timeline.push(exitFullscreen);
 
 // DataPipe conclude data collection
-// const save_data = {
-//   type: jsPsychPipe,
-//   action: "save",
-//   experiment_id: "oA2BJCIcu8jQ",
-//   filename: filename,
-//   data_string: () => jsPsych.data.get().csv(),
-//   on_finish: function (data) {
-//     function countdown(start, end) {
-//       const timer = setInterval(function() {
-//         if (start <= end) {
-//           clearInterval(timer);
-//         } else {
-//           start--;
-//           document.getElementById("countdown").innerHTML = start;
-//         }
-//       }, 1000);
-//     }
+const save_data = {
+   type: jsPsychPipe,
+   action: "save",
+   experiment_id: "h8BPIqindPID", //updated as of april 22
+   filename: filename,
+   data_string: () => jsPsych.data.get().csv(),
+   on_finish: function (data) {
+     function countdown(start, end) {
+       const timer = setInterval(function() {
+         if (start <= end) {
+           clearInterval(timer);
+         } else {
+           start--;
+           document.getElementById("countdown").innerHTML = start;
+        }
+      }, 1000);
+     }
     
-//     countdown(5, 0);
+     countdown(5, 0);
 
-//     jsPsych.endExperiment(
-//       `<p class="jspsych-center">
-//         Thanks for participating! You will be redirected in <span id="countdown">5</span> seconds.
-//       </p>`
-//     );
-//     setTimeout(function () {
-//       window.location.href = "https://app.prolific.com/submissions/complete?cc=CNN3F4P4";
-//     }, 5000)
-//   }
-// };
+     jsPsych.endExperiment(
+      `<p class="jspsych-center">
+         Thanks for participating! You will be redirected in <span id="countdown">5</span> seconds.
+       </p>`
+     );
+     setTimeout(function () {
+       window.location.href = "https://app.prolific.com/submissions/complete?cc=CUB7DRMV"; //this is updated as of april 22
+     }, 5000)
+   }
+ };
 
-// timeline.push(save_data);
+timeline.push(save_data);
 
 // Preload all images
 // const imageSet = avatarPhotos;
