@@ -130,44 +130,44 @@ timeline.push(consentForm);
 // EVIL INSTRUCTIONS //
 const instructionsEvil = {
   type: jsPsychInstructions,
-  pages: [`
-        <h2><strong>Instructions</strong></h2>
-        <p style="text-align: left;">
-          Welcome to this experiment! In this study you will see a 
-          series of pairs of computer-generated faces. 
-        </p>
-        <p style="text-align: left;">
-          Your task is to select which of the two faces appears more <strong>morally bad</strong> to you.  
-        </p>
-        <p style="text-align: left;">
-          <strong>
-          You will press the 'f' key to select the face on the left, and the 'j' key to select the face on right. We are interested in your opinions.
-          </strong>
-        </p>`,
+  pages: [
+    `<h2><strong>Instructions</strong></h2>
+     <p style="text-align: left;">
+       Welcome to the experiment! In this study, you will see a 
+       series of pairs of computer-generated faces and be asked to answer a few questions. 
+     </p>`,
+
+    `<p style="text-align: left;">
+      Your task is to select which of two faces appears more <strong>morally bad</strong> to you. There are no right or wrong answers, we are interested in your gut response.
+    </p>`,
+
+    `<p style="text-align: left;">
+      You will press the <strong>'f' key</strong> to select the face on the left, and the <strong>'j' key</strong> to select the face on the right. 
+    </p>`,
   ],
   show_clickable_nav: true,
 };
 
 // SAINTLY INSTRUCTIONS //
 const instructionsSaintly = {
-  type: jsPsychInstructions,
-  pages: [
-    `<h2><strong>Instructions</strong></h2>
-    <p style="text-align: left;">
-    Welcome to this experiment! In this study you will see a 
-    series of pairs of computer-generated faces. 
-  </p>
-    <p style="text-align: left;">
-    Your task is to select which of the two faces appears more <strong>morally good</strong> to you. 
-    </p>
-    <p style="text-align: left;">
-      <strong>
-      You will press the 'f' key to select the face on the left, and the 'j' key to select the face on right. We are interested in your opinions.
-      </strong>
-    </p>`
-  ],
-  show_clickable_nav: true,
-};
+    type: jsPsychInstructions,
+    pages: [
+      `<h2><strong>Instructions</strong></h2>
+       <p style="text-align: left;">
+         Welcome to the experiment! In this study, you will see a 
+         series of pairs of computer-generated faces and be asked to answer a few questions. 
+       </p>`,
+  
+      `<p style="text-align: left;">
+      Your task is to select which of the two faces appears more <strong>morally bad</strong> to you. There are no right or wrong answers, we are interested in your gut response.
+      </p>`,
+  
+      `<p style="text-align: left;">
+        You will press the <strong>'f' key</strong> to select the face on the left, and the <strong>'j' key</strong> to select the face on the right. 
+      </p>`,
+    ],
+    show_clickable_nav: true,
+  };
 
 const instructionsEvilComprehensionCheck = {
   type: jsPsychSurveyMultiChoice,
@@ -183,8 +183,9 @@ const instructionsEvilComprehensionCheck = {
       ],
       correct: 'Judge which face appears more morally bad.',
       hint: `That's not quite right. Remember, you are judging which face appears more <strong>morally bad</strong>`,
-      required: true,
-
+      required: true
+    },
+    {
       name: 'evil_comp_check_2',
       prompt: '<strong><i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;What buttons should you press to make your selection?</strong>',
       options: [
@@ -193,16 +194,14 @@ const instructionsEvilComprehensionCheck = {
         "The S key for selecting the left face, and the K key for selecting the right face."
       ],
       correct: 'The F key for selecting the left face, and the J key for selecting the right face.',
-      hint: `That's not quite right. Remember, you should use the F key for selecting the left face, and the J key for selecting the right face.</strong>`,
+      hint: `That's not quite right. Remember, you should use the F key for selecting the left face, and the J key for selecting the right face.`,
       required: true
     }
   ],
-  preamble:
-    `<h2 style="text-align: center;">Instructions Review</h2> 
+  preamble: `<h2 style="text-align: center;">Instructions Review</h2>
     <p style="text-align: left;"> 
       The experiment will begin on the next page.
-      
-      As a reminder, you will see a series of computer-generated faces. These faces will be blurry and hard to make out. Your task is to select whichever one looks <b>more</b> morally bad even if they are hard to tell apart.<br><br>
+      As a reminder, you will see a series of computer-generated faces. These faces will be blurry and hard to make out. Your task is to select whichever one looks <strong>more</strong> morally bad even if they are hard to tell apart.<br><br>
     </p>`
 };
 
@@ -220,8 +219,9 @@ const instructionsSaintlyComprehensionCheck = {
       ],
       correct: 'Judge which face appears more morally good.',
       hint: `That's not quite right. Remember, you are judging which face appears more <strong>morally good</strong>`,
-      required: true,
-
+      required: true
+    },
+    {
       name: 'saintly_comp_check_2',
       prompt: '<strong><i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;What buttons should you press to make your selection?</strong>',
       options: [
@@ -230,51 +230,63 @@ const instructionsSaintlyComprehensionCheck = {
         "The S key for selecting the left face, and the K key for selecting the right face."
       ],
       correct: 'The F key for selecting the left face, and the J key for selecting the right face.',
-      hint: `That's not quite right. Remember, you should use the F key for selecting the left face, and the J key for selecting the right face.</strong>`,
+      hint: `That's not quite right. Remember, you should use the F key for selecting the left face, and the J key for selecting the right face.`,
       required: true
     }
   ],
-  preamble:
-    `<h2 style="text-align: center;">Instructions Review</h2> 
+  preamble: `<h2 style="text-align: center;">Instructions Review</h2>
     <p style="text-align: left;"> 
       The experiment will begin on the next page.
-      
-      As a reminder, you will see a series of computer-generated faces. These faces will be blurry and hard to make out. Your task is to select whichever one looks <b>more</b> morally good even if they are hard to tell apart.<br><br>
+      As a reminder, you will see a series of computer-generated faces. These faces will be blurry and hard to make out. Your task is to select whichever one looks <strong>more</strong> morally good even if they are hard to tell apart.<br><br>
     </p>`
 };
+
 
 // TASK 
 
 function selectionTask(trialIndex, evilMoralCondition, randomized_indices) {
-    let wording = "good"
+  let wording = "good";
 
-    if (evilMoralCondition == "evil") {
-        wording = "bad"
-    }
+  if (evilMoralCondition === "evil") {
+      wording = "bad";
+  }
 
-    let trial_stimulus = `
-        <div style="font-size:30px;">Which face looks more morally <strong>${wording}</strong>?</div>
-        <br>
-        <img src="images/rcic_avg_2022_00${randomized_indices[trialIndex]}_inv.png">
-        <img src="images/rcic_avg_2022_00${randomized_indices[trialIndex]}_ori.png">
-        <br>
-        <br>
-        <br>
-        <br>
-        Reminder: The <b>F</b> key is for the face on the left and the <b>J</b> key is for the face on the right
-    `
-    
-    let selection = {
-        type: jsPsychHtmlKeyboardResponse,
-        stimulus: trial_stimulus,
-        choices: ["f", "j"],
-        //trial_duration: 5000,
-        data: {
-            index: randomized_indices[trialIndex]
-        }
-    }
+  // Randomize which image comes first (true means original first, false means inverted first)
+  const originalFirst = Math.random() < 0.5;
 
-    return selection
+  // Determine the order of the images based on the random value
+  const firstImage = originalFirst 
+      ? `images/rcic_avg_2022_00${randomized_indices[trialIndex]}_ori.png` 
+      : `images/rcic_avg_2022_00${randomized_indices[trialIndex]}_inv.png`;
+
+  const secondImage = originalFirst 
+      ? `images/rcic_avg_2022_00${randomized_indices[trialIndex]}_inv.png` 
+      : `images/rcic_avg_2022_00${randomized_indices[trialIndex]}_ori.png`;
+
+  let trial_stimulus = `
+      <div style="font-size:30px;">Which face looks more morally <strong>${wording}</strong>?</div>
+      <br>
+      <img src="${firstImage}">
+      <img src="${secondImage}">
+      <br>
+      <br>
+      <br>
+      <br>
+      Reminder: The <b>F</b> key is for the face on the left and the <b>J</b> key is for the face on the right
+  `;
+
+  let selection = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: trial_stimulus,
+      choices: ["f", "j"],
+      //trial_duration: 5000,
+      data: {
+          index: randomized_indices[trialIndex],
+          originalFirst
+      }
+  };
+
+  return selection;
 }
 
 var fixation = {
@@ -289,7 +301,7 @@ var fixation = {
 }
 }
 
-// Evil 
+///////////////////////////////////////////// Evil /////////////////////////////////////////////
 if (evilMoralCondition === 'evil') {
 
   // Instructions
@@ -298,22 +310,17 @@ if (evilMoralCondition === 'evil') {
     instructionsEvilComprehensionCheck
   );
 
-  // Sampling Task
+  // Sampling Task - evil
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
       fixation,
       selectionTask(trialIndex, evilMoralCondition, randomized_indices),
     );
-    // if (trialIndex != trials.length - 1) {
-    //   timeline.push(
-    //     newTrialPage(trialIndex)
-    //   );
-    // };
   };
 
 }
 
-// SAINTLY
+///////////////////////////////////////////// SAINTLY /////////////////////////////////////////////
   else if (evilMoralCondition === 'saintly') {
   
   // Instructions
@@ -322,22 +329,17 @@ if (evilMoralCondition === 'evil') {
     instructionsSaintlyComprehensionCheck
   );
 
-  // Sampling Task -- to replace with the actual RC task
+  // Sampling Task - good
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
         fixation,
         selectionTask(trialIndex, evilMoralCondition, randomized_indices)
     );
-    // if (trialIndex != trials.length - 1) {
-    //   timeline.push(
-    //     newTrialPage(trialIndex)
-    //   );
-    // };
   };
 
 };
 
-// DEMOGRAPHICS //
+/////////////////////////////////////////////// DEMOGRAPHICS ///////////////////////////////////////////////
 const demographicsQuestions = {
   type: jsPsychSurveyHtmlForm,
   preamble:
