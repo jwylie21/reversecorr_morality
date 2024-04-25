@@ -71,11 +71,11 @@ const consentForm = {
             The purpose of this study is social decision-making, and specifically how people judge the decisions and 
             values of others. 
             This study will be conducted through this online survey. 
-            The study should take you about 17 minutes to complete.
+            The study should take you about 10-15 minutes to complete.
             </p>
             <p style="text-align: left;">
             There are no direct benefits to you, but you may feel gratified knowing that you helped further the scholarly 
-            work in this research area. You will be compensated $2.50 for participating in this study.
+            work in this research area. You will be compensated $1.95 for participating in this study.
             There are no costs to you associated with your participation.
             </p>
             <p style="text-align: left;">
@@ -138,7 +138,11 @@ const instructionsEvil = {
      </p>`,
 
     `<p style="text-align: left;">
-      Your task is to select which of two faces appears more <strong>morally bad</strong> to you. There are no right or wrong answers, we are interested in your gut response.
+      Your task is to select which of two faces appears more <strong>morally bad</strong> to you. There are no right or wrong answers, we are interested in your gut response. 
+    </p>`,
+
+    `<p style="text-align: left;">
+    You will see <b>many</b> pairs of faces. We have included a progress bar so that you are aware of how many more you have left. We know this task is long, please try to stay focused and attentive. 
     </p>`,
 
     `<p style="text-align: left;">
@@ -160,6 +164,10 @@ const instructionsSaintly = {
   
       `<p style="text-align: left;">
       Your task is to select which of the two faces appears more <strong>morally bad</strong> to you. There are no right or wrong answers, we are interested in your gut response.
+      </p>`,
+
+      `<p style="text-align: left;">
+      You will see <b>many</b> pairs of faces. We have included a progress bar so that you are aware of how many more you have left. We know this task is long, please try to stay focused and attentive. 
       </p>`,
   
       `<p style="text-align: left;">
@@ -294,7 +302,7 @@ var fixation = {
   stimulus: '<div style="font-size:60px;text-align:center; height:500px; line-height:500px;">+</div>',
   choices: "NO_KEYS",
   trial_duration: function(){
-    return jsPsych.randomization.sampleWithReplacement([350, 550, 750, 950, 1250], 1)[0];
+    return jsPsych.randomization.sampleWithReplacement([750, 850, 950, 1050, 1150], 1)[0];
   },
   data: {
     task: 'fixation'
