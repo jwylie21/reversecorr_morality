@@ -163,7 +163,7 @@ const instructionsSaintly = {
        </p>`,
   
       `<p style="text-align: left;">
-      Your task is to select which of the two faces appears more <strong>morally bad</strong> to you. There are no right or wrong answers, we are interested in your gut response.
+      Your task is to select which of the two faces appears more <strong>morally good</strong> to you. There are no right or wrong answers, we are interested in your gut response.
       </p>`,
 
       `<p style="text-align: left;">
@@ -252,13 +252,7 @@ const instructionsSaintlyComprehensionCheck = {
 
 // TASK 
 
-function selectionTask(trialIndex, evilMoralCondition, randomized_indices) {
-  let wording = "good";
-
-  if (evilMoralCondition === "evil") {
-      wording = "bad";
-  }
-
+function selectionTask(trialIndex, wording, randomized_indices) {
   // Randomize which image comes first (true means original first, false means inverted first)
   const originalFirst = Math.random() < 0.5;
 
@@ -322,14 +316,14 @@ if (evilMoralCondition === 'evil') {
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
       fixation,
-      selectionTask(trialIndex, evilMoralCondition, randomized_indices),
+      selectionTask(trialIndex, "bad", randomized_indices),
     );
   };
 
 }
 
 ///////////////////////////////////////////// SAINTLY /////////////////////////////////////////////
-  else if (evilMoralCondition === 'saintly') {
+else if (evilMoralCondition === 'saintly') {
   
   // Instructions
   timeline.push(
@@ -341,7 +335,7 @@ if (evilMoralCondition === 'evil') {
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
         fixation,
-        selectionTask(trialIndex, evilMoralCondition, randomized_indices)
+        selectionTask(trialIndex, "good", randomized_indices)
     );
   };
 
