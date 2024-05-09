@@ -127,6 +127,23 @@ const consentForm = {
 
 timeline.push(consentForm);
 
+// PRELOAD IMAGES //
+let all_images_array = []
+
+for (let i = 0; i < 350; i++) {
+    all_images_array.push(
+        `images/rcic_avg_2022_00${('00' + (i + 1).toString()).slice(-3)}_inv.png`,
+        `images/rcic_avg_2022_00${('00' + (i + 1).toString()).slice(-3)}_ori.png`
+    )
+}
+
+const preload_faces = {
+    type: jsPsychPreload,
+    images: all_images_array
+}
+
+timeline.push(preload_faces)
+
 // EVIL INSTRUCTIONS //
 const instructionsEvil = {
   type: jsPsychInstructions,
