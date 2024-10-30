@@ -906,7 +906,7 @@ timeline.push(exitFullscreen);
 const save_data = {
    type: jsPsychPipe,
    action: "save",
-   experiment_id: "h8BPIqindPID", //updated as of april 22
+   experiment_id: "g2TOq0qAEaKh", //updated as of oct 30
    filename: filename,
    data_string: () => jsPsych.data.get().csv(),
    on_finish: function (data) {
@@ -929,7 +929,7 @@ const save_data = {
        </p>`
      );
      setTimeout(function () {
-       window.location.href = "https://app.prolific.com/submissions/complete?cc=C1KP7M9Q"; //this is updated as of april 22
+       window.location.href = "https://app.prolific.com/submissions/complete?cc=C1KP7M9Q"; //this is updated as of oct 30
      }, 5000)
    }
  };
