@@ -268,7 +268,7 @@ function selectionTask(trialIndex, wording, randomized_indices) {
       : `images/rcic_avg_2022_00${randomized_indices[trialIndex]}_ori.png`;
 
   let trial_stimulus = `
-      <div style="font-size:30px;">Which face looks more morally <strong>${wording}</strong>?</div>
+      <div style="font-size:30px;">Which face looks more <strong>${wording}</strong>?</div>
       <br>
       <img src="${firstImage}">
       <img src="${secondImage}">
