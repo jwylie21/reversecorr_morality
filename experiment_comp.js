@@ -73,11 +73,11 @@ const consentForm = {
             The purpose of this study is social decision-making, and specifically how people judge the decisions and 
             values of others. 
             This study will be conducted through this online survey. 
-            The study should take you about 10-15 minutes to complete.
+            The study should take you about 20 minutes to complete.
             </p>
             <p style="text-align: left;">
             There are no direct benefits to you, but you may feel gratified knowing that you helped further the scholarly 
-            work in this research area. You will be compensated $1.95 for participating in this study.
+            work in this research area. You will be compensated $3.10 for participating in this study.
             There are no costs to you associated with your participation.
             </p>
             <p style="text-align: left;">
