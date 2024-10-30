@@ -140,7 +140,7 @@ const instructionsEvil = {
      </p>`,
 
     `<p style="text-align: left;">
-      Your task is to select which of two faces appears <strong>less competent</strong> to you. There are no right or wrong answers, we are interested in your gut response. 
+      Your task is to select which of two faces appears more <strong>incompetent</strong> to you. There are no right or wrong answers, we are interested in your gut response. 
     </p>`,
 
     `<p style="text-align: left;">
@@ -165,7 +165,7 @@ const instructionsSaintly = {
        </p>`,
   
       `<p style="text-align: left;">
-      Your task is to select which of the two faces appears <strong>more competent</strong> to you. There are no right or wrong answers, we are interested in your gut response.
+      Your task is to select which of the two faces appears more <strong>competent</strong> to you. There are no right or wrong answers, we are interested in your gut response.
       </p>`,
 
       `<p style="text-align: left;">
@@ -187,12 +187,12 @@ const instructionsEvilComprehensionCheck = {
       prompt: '<strong><i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;For each statement, your task is to:</strong>',
       options: [
         "Judge which face appears more competent.",
-        "Judge which face appears less competent.",
+        "Judge which face appears more incompetent.",
         "Judge which face appears more familiar.",
         "Judge which face appears less attractive."
       ],
-      correct: 'Judge which face appears less competent.',
-      hint: `That's not quite right. Remember, you are judging which face appears <strong>less competent</strong>`,
+      correct: 'Judge which face appears more incompetent.',
+      hint: `That's not quite right. Remember, you are judging which face appears more <strong>incompetent</strong>`,
       required: true
     },
     {
@@ -211,7 +211,7 @@ const instructionsEvilComprehensionCheck = {
   preamble: `<h2 style="text-align: center;">Instructions Review</h2>
     <p style="text-align: left;"> 
       The experiment will begin on the next page.
-      As a reminder, you will see a series of computer-generated faces. These faces will be blurry and hard to make out. Your task is to select whichever one looks <strong>less</strong> competent even if they are hard to tell apart.<br><br>
+      As a reminder, you will see a series of computer-generated faces. These faces will be blurry and hard to make out. Your task is to select whichever one looks <strong>more</strong> incompetent even if they are hard to tell apart.<br><br>
     </p>`
 };
 
@@ -223,12 +223,12 @@ const instructionsSaintlyComprehensionCheck = {
       prompt: '<strong><i class="fa-solid fa-circle-question"></i>&nbsp;&nbsp;For each statement, your task is to:</strong>',
       options: [
         "Judge which face appears more competent.",
-        "Judge which face appears less competent.",
+        "Judge which face appears more incompetent.",
         "Judge which face appears more familiar.",
         "Judge which face appears less attractive."
       ],
       correct: 'Judge which face appears more competent.',
-      hint: `That's not quite right. Remember, you are judging which face appears <strong>more competent</strong>`,
+      hint: `That's not quite right. Remember, you are judging which face appears more <strong>competent</strong>`,
       required: true
     },
     {
@@ -314,11 +314,11 @@ if (compMoralCondition === 'notcomp') {
     instructionsEvilComprehensionCheck
   );
 
-  // Sampling Task - evil
+  // Sampling Task - incompetent
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
       fixation,
-      selectionTask(trialIndex, "bad", randomized_indices),
+      selectionTask(trialIndex, "incompetent", randomized_indices),
     );
   };
 
@@ -333,11 +333,11 @@ else if (compMoralCondition === 'comp') {
     instructionsSaintlyComprehensionCheck
   );
 
-  // Sampling Task - good
+  // Sampling Task - competent
   for (let trialIndex = 0; trialIndex < trials.length; trialIndex++) {
     timeline.push(
         fixation,
-        selectionTask(trialIndex, "good", randomized_indices)
+        selectionTask(trialIndex, "competent", randomized_indices)
     );
   };
 
